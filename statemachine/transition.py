@@ -1,16 +1,14 @@
-from typing import Dict, List, Optional, Callable
+from typing import List, Optional, Callable
 
-class Transition(Dict[str, List[str]]):
+class Transition():
     def __init__(self,
-                 k:Optional[str]=None,
-                 v: Optional[List[str]]=None,
+                 from_state_name:str,
+                 to_states_names: List[str],
                  before: Optional[Callable]=None,
                  after: Optional[Callable]=None) -> None:
 
-        super(Transition, self).__init__()
-
-        if (k is not None) and (v is not None):
-            self[k] = v
+        self.from_state_name = from_state_name
+        self.to_states_names = to_states_names
 
         if before is not None:
             self.before = before
@@ -25,7 +23,7 @@ class Transition(Dict[str, List[str]]):
         pass
 
     def __str__(self):
-        return "\n".join([k + " -> " + str(self[k]) for k in self.keys()])
+        return from_state_name + " -> " + ", ".join(self.to_states_names)
 
     def __contains__(self, state_name: str) -> bool:
-        return state_name in self[list(self.keys())[0]]
+        return state_name in self.to_states_names

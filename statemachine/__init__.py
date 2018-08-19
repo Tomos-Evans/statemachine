@@ -21,12 +21,11 @@ class StateMachine:
         if new_state.is_starting_state:
             self.current_state = new_state
 
-    def _add_transition(self, new_transition: Transition) -> None:
-        (k,v), = new_transition.items()
+    def _add_transition(self, t: Transition) -> None:
         is_declared: Callable[[str], bool] = lambda k: k in self.states
-        assert is_declared(k), "Cannot transition from an undeclared state"
-        assert all(t for t in map(is_declared, v)), "Canot transition to an undeclared state"
-        self.transitions[k] = new_transition
+        assert is_declared(t.from_state_name), "Cannot transition from an undeclared state"
+        assert all(t for t in map(is_declared, t.to_states_names)), "Canot transition to an undeclared state"
+        self.transitions[t.from_state_name] = t
 
     def can_transition_to(self, state_name: str) -> bool:
         assert (state_name in self.states.keys()), "No such state " + state_name
