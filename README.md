@@ -85,10 +85,10 @@ The transition hooks provided are:
 
 #### Hook execution order
 The order in which state and transition hooks are executed is as follows:
-1. before (transition)
-2. will_exit (of the current state)
-3. will_enter (of the new state)
-4. **State change**
-5. exited (of the preivious state)
-6. entered (of the new current state)
-7. after (of the transition)
+1. **before** (transition)
+2. **will_exit** (of the current state)
+3. **will_enter** (of the new state)
+4. **--  State change  --**
+5. **exited** (of the preivious state)
+6. **entered** (of the new current state)
+7. **after** (of the transition)
