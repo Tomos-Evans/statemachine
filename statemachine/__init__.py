@@ -1,3 +1,5 @@
+name = "statemachine"
+
 from typing import Dict, Union, Optional, Callable
 
 from statemachine.state import State
