@@ -32,9 +32,9 @@ class StateMachine:
     def can_transition_to(self, state_name: str) -> bool:
         assert (state_name in self.states.keys()), "No such state " + state_name
 
-        if self.current_state is not None:
-            return state_name in self.transitions[self.current_state.name]
-        raise Exception
+        if self.current_state is None:
+            raise Exception
+        return (self.current_state.name in self.transitions.keys()) and (state_name in self.transitions[self.current_state.name])
 
     def transition_to(self, state_name: str) -> None:
         if self.can_transition_to(state_name):

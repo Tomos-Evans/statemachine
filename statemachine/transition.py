@@ -23,7 +23,7 @@ class Transition():
         pass
 
     def __str__(self):
-        return from_state_name + " -> " + ", ".join(self.to_states_names)
+        return self.from_state_name + " -> " + ", ".join(self.to_states_names)
 
     def __contains__(self, state_name: str) -> bool:
         return state_name in self.to_states_names
