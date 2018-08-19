@@ -1,4 +1,6 @@
-# state-machine
+[![Build Status](https://travis-ci.org/Tomos-Evans/statemachine.svg?branch=master)](https://travis-ci.org/Tomos-Evans/statemachine)
+
+# statemachine
 A simple state machine library for Python.
 
 ## Example
