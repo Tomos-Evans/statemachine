@@ -38,6 +38,17 @@ class StateMachine:
     def transition_to(self, state_name: str) -> None:
         if self.can_transition_to(state_name):
             transition = self.transitions[self.current_state.name]
+            old_state = self.current_state
+            new_state = self.states[state_name]
+
             transition.before()
-            self.current_state = self.states[state_name]
+            self.current_state.will_exit()
+            new_state.will_enter()
+
+            self.current_state = new_state
+
+            old_state.exited()
+            self.current_state.entered()
             transition.after()
+        else:
+            raise Exception
