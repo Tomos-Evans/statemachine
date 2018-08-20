@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/Tomos-Evans/statemachine.svg?branch=master)](https://travis-ci.org/Tomos-Evans/statemachine)
 
-# statemachine
+# statemachine [![Build Status](https://travis-ci.org/Tomos-Evans/statemachine.svg?branch=master)](https://travis-ci.org/Tomos-Evans/statemachine)
+
 A simple state machine library for Python.
 
 ## Example
@@ -67,10 +67,10 @@ self.add(State('offline', will_enter=will_enter_offline))
 ```
 
 The state hooks that are provided are:
-1. `will_enter` - called before the machine enters the state
-2. `entered` - called immediately after the state is entered
-3. `will_exit` - called when the state is about to be exited
-4. `exited` - called immediately after the state is exited
+- `will_enter` - called before the machine enters the state
+- `entered` - called immediately after the state is entered
+- `will_exit` - called when the state is about to be exited
+- `exited` - called immediately after the state is exited
 
 #### Transition Hooks
 Transition hooks are more high level than state hooks, and as the name suggests they apply to an entire transition rather than a specific state.
@@ -81,8 +81,8 @@ self.add(Transition('online', ['offline'], before=before)
 ```
 
 The transition hooks provided are:
-1. `before` - called before the transition happens
-2. `after` - called after the transition happens
+- `before` - called before the transition happens
+- `after` - called after the transition happens
 
 
 #### Hook execution order
