@@ -12,26 +12,10 @@ class State:
         self.is_starting_state = is_starting_state
         self.name = name
 
-        if will_enter is not None:
-            self.will_enter = will_enter
-        if entered is not None:
-            self.entered = entered
-        if will_exit is not None:
-            self.will_exit = will_exit
-        if exited is not None:
-            self.exited = exited
-
-    def will_enter(self):
-        pass
-
-    def entered(self):
-        pass
-
-    def will_exit(self):
-        pass
-
-    def exited(self):
-        pass
+        self.will_enter = will_enter if will_enter else lambda : None
+        self.entered = entered if entered else lambda : None
+        self.will_exit = will_exit if will_exit else lambda : None
+        self.exited = exited if exited else lambda : None
 
     def __str__(self):
         return self.name
