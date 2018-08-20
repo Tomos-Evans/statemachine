@@ -10,17 +10,8 @@ class Transition():
         self.from_state_name = from_state_name
         self.to_states_names = to_states_names
 
-        if before is not None:
-            self.before = before
-
-        if after is not None:
-            self.after = after
-
-    def before(f: Callable) -> None:
-        pass
-
-    def after(f: Callable) -> None:
-        pass
+        self.before = before if before else lambda : None
+        self.after = after if after else lambda : None
 
     def __str__(self):
         return self.from_state_name + " -> " + ", ".join(self.to_states_names)
